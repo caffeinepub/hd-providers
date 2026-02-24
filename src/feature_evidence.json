@@ -1,0 +1,165 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-home-page-displaying-four-product-categories-vegetables-dairy-groceries-and-food-each-category-should-be-clickable-and-navigate-to-its-respective-product-listing-page",
+      "featureTitle": "Create a home page displaying four product categories: Vegetables, Dairy, Groceries, and Food. Each category should be clickable and navigate to its respective product listing page.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/CategoryCard.tsx",
+        "frontend/src/pages/HomePage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-product-listing-page-that-displays-products-with-images-names-and-prices-products-should-be-filterable-by-the-four-categories-vegetables-dairy-groceries-food",
+      "featureTitle": "Create a product listing page that displays products with images, names, and prices. Products should be filterable by the four categories (Vegetables, Dairy, Groceries, Food).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/ProductCard.tsx",
+        "frontend/src/hooks/useProducts.ts",
+        "frontend/src/pages/ProductsPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-add-to-cart-functionality-allowing-users-to-add-products-to-their-shopping-cart-each-product-should-have-an-add-to-cart-button-that-increments-the-quantity-if-the-item-is-already-in-the-cart",
+      "featureTitle": "Implement add to cart functionality allowing users to add products to their shopping cart. Each product should have an 'Add to Cart' button that increments the quantity if the item is already in the cart.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Navigation.tsx",
+        "frontend/src/components/ProductCard.tsx",
+        "frontend/src/hooks/useCart.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-cart-page-displaying-all-items-added-to-the-cart-with-their-quantities-individual-prices-and-a-total-amount-calculation-users-should-be-able-to-adjust-quantities-or-remove-items-from-the-cart",
+      "featureTitle": "Create a cart page displaying all items added to the cart with their quantities, individual prices, and a total amount calculation. Users should be able to adjust quantities or remove items from the cart.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/CartItem.tsx",
+        "frontend/src/hooks/useCart.ts",
+        "frontend/src/pages/CartPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-checkout-page-with-two-payment-options-cash-on-delivery-and-upi-offline-payment-for-upi-display-a-qr-code-that-users-can-scan-to-make-payment-manually-outside-the-app-include-an-order-confirmation-screen-after-checkout",
+      "featureTitle": "Create a checkout page with two payment options: Cash on Delivery and UPI (offline payment). For UPI, display a QR code that users can scan to make payment manually outside the app. Include an order confirmation screen after checkout.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/hooks/useOrders.ts",
+        "frontend/src/pages/CheckoutPage.tsx",
+        "frontend/src/pages/OrderConfirmationPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-an-admin-panel-that-allows-adding-new-products-with-name-price-category-and-image-and-editing-existing-products-access-to-the-admin-panel-should-be-restricted-to-specific-authorized-users",
+      "featureTitle": "Create an admin panel that allows adding new products (with name, price, category, and image) and editing existing products. Access to the admin panel should be restricted to specific authorized users.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/AccessDeniedScreen.tsx",
+        "frontend/src/components/ProductForm.tsx",
+        "frontend/src/hooks/useAuth.ts",
+        "frontend/src/hooks/useProducts.ts",
+        "frontend/src/pages/AdminPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-apply-a-clean-modern-design-throughout-the-entire-application-using-a-white-background-with-green-buttons-ensure-consistent-styling-across-all-pages-with-a-simple-and-intuitive-user-interface",
+      "featureTitle": "Apply a clean, modern design throughout the entire application using a white background with green buttons. Ensure consistent styling across all pages with a simple and intuitive user interface.",
+      "files": [
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "kind": "build_request",
+  "title": "Build HD Providers grocery and food delivery app",
+  "projectName": "HD Providers",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a home page displaying four product categories: Vegetables, Dairy, Groceries, and Food. Each category should be clickable and navigate to its respective product listing page.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3",
+          "msg-7"
+        ],
+        "quotes": [
+          "Home page with categories (Vegetables, Dairy, Groceries, Food)"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Home page displays exactly four categories: Vegetables, Dairy, Groceries, Food",
+        "Each category is clickable and navigates to the corresponding product listing page",
+        "Categories are visually distinct and easy to identify"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Create a product listing page that displays products with images, names, and prices. Products should be filterable by the four categories (Vegetables, Dairy, Groceries, Food).",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-3",
+          "msg-7"
+        ],
+        "quotes": [
+          "Product listing page with images and prices",
+          "Product list with images and prices"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Product listing page shows product image, name, and price for each item",
+        "Products can be filtered by category (Vegetables, Dairy, Groceries, Food)",
+        "Product data is stored in the backend and retrieved dynamically"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Implement add to cart functionality allowing users to add products to their shopping cart. Each product should have an 'Add to Cart' button that increments the quantity if the item is already in the cart.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-3",
+          "msg-7"
+        ],
+        "quotes": [
+          "Add to cart functionality",
+          "Add to cart option"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Each product has an 'Add to Cart' button",
+        "Clicking the button adds the product to the cart or increments quantity if already present",
+        "Cart state persists across page navigation",
+        "Visual feedback confirms item was added to cart"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Create a cart page displaying all items added to the cart with their quantities, individual prices, and a total amount calculation. Users should be able to adjust quantities or remove items from the cart.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3",
+          "msg-7"
+        ],
+        "quotes": [
+          "Cart page with total amount calculation",
+          "Cart page with totals"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Cart page lists all items with product name, quantity, and individual price",
+        "Users can increase or decrease item quantities",
+        "Users can remove items from the cart",
+        "Total amount updates dynamically based on cart contents",
+        "Empty cart displays appropriate message"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Create a checkout page with two payment options: Cash on Delivery and UPI (offline payment). For UPI, display a QR code that users can scan to make payment manually outside the app. Include an order confirmation screen after checkout.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-5",
+          "msg-7",
+          "msg-9"
+        ],
+        "quotes": [
+          "Checkout with Cash on Delivery + UPI (offline via QR)",
+          "Cash on Delivery and UPI payment option",
+          "users can select UPI and pay manually via QR"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Checkout page displays two payment options: Cash on Delivery and UPI",
+        "Selecting UPI displays a QR code for manual payment",
+        "Order can be placed with either payment method selected",
+        "Order confirmation screen displays after successful checkout with order details",
+        "Order data is stored in the backend"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Create an admin panel that allows adding new products (with name, price, category, and image) and editing existing products. Access to the admin panel should be restricted to specific authorized users.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-3",
+          "msg-7",
+          "msg-9"
+        ],
+        "quotes": [
+          "Admin panel for adding and editing products with restricted access",
+          "Admin panel to add/edit products",
+          "Only specific users (me) should have admin access"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Admin panel has forms to add new products with fields for name, price, category, and image",
+        "Admin panel displays list of existing products with edit functionality",
+        "Products can be edited to update name, price, category, or image",
+        "Admin panel access is restricted and not publicly accessible",
+        "Changes to products are immediately reflected in the product listing page"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Apply a clean, modern design throughout the entire application using a white background with green buttons. Ensure consistent styling across all pages with a simple and intuitive user interface.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3",
+          "msg-7"
+        ],
+        "quotes": [
+          "Design should be simple, modern, white background with green buttons",
+          "Clean white background with green buttons"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All pages use white background as the primary background color",
+        "All primary action buttons (Add to Cart, Checkout, Submit, etc.) are styled in green",
+        "Typography and spacing create a clean, modern aesthetic",
+        "Design is consistent across home, product listing, cart, checkout, and admin pages",
+        "UI is intuitive and easy to navigate"
+      ]
+    }
+  ],
+  "constraints": [
+    "No authentication or login system should be implemented initially",
+    "UPI payment is offline only - users select it and pay manually via QR code, no real-time payment integration",
+    "Admin panel access restriction should be implemented without requiring user authentication"
+  ],
+  "nonGoals": [
+    "User authentication or login system",
+    "Real-time UPI payment integration",
+    "Phone number login",
+    "Order tracking or delivery status updates",
+    "User profiles or order history",
+    "Real-time notifications"
+  ],
+  "imageRequirements": {
+    "required": [
+      "Sample product images for vegetables category - tomatoes, onions, potatoes (vegetables-sample.dim_300x300.png)",
+      "Sample product images for dairy category - milk, cheese, yogurt (dairy-sample.dim_300x300.png)",
+      "Sample product images for groceries category - rice, flour, lentils (groceries-sample.dim_300x300.png)",
+      "Sample product images for food category - bread, eggs, snacks (food-sample.dim_300x300.png)",
+      "UPI QR code placeholder for offline payment (upi-qr-placeholder.dim_200x200.png)"
+    ],
+    "edits": []
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "HD Providers - A local home delivery web app for ordering groceries and food items. Features include home page with categories (Vegetables, Dairy, Groceries, Food), product listings with images and prices, add to cart functionality, cart page with totals, checkout with Cash on Delivery and UPI offline payment (QR code), and admin panel for adding/editing products. Design uses clean white background with green buttons. No authentication initially (to be added later).",
+  "architectural_notes": [
+    "No authentication system initially - to be added in future iteration",
+    "UPI payment is offline only - users select UPI and pay manually via QR code",
+    "Admin panel access restricted to specific users (owner)",
+    "Design: white background with green buttons for consistent branding"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Sample product images for vegetables category - tomatoes, onions, potatoes (vegetables-sample.dim_300x300.png)\n- Sample product images for dairy category - milk, cheese, yogurt (dairy-sample.dim_300x300.png)\n- Sample product images for groceries category - rice, flour, lentils (groceries-sample.dim_300x300.png)\n- Sample product images for food category - bread, eggs, snacks (food-sample.dim_300x300.png)\n- UPI QR code placeholder for offline payment (upi-qr-placeholder.dim_200x200.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-a-home-page-displaying-four-product-categories-vegetables-dairy-groceries-and-food-each-category-should-be-clickable-and-navigate-to-its-respective-product-listing-page",
+      "title": "Create a home page displaying four product categories: Vegetables, Dairy, Groceries, and Food. Each category should be clickable and navigate to its respective product listing page.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-product-listing-page-that-displays-products-with-images-names-and-prices-products-should-be-filterable-by-the-four-categories-vegetables-dairy-groceries-food",
+      "title": "Create a product listing page that displays products with images, names, and prices. Products should be filterable by the four categories (Vegetables, Dairy, Groceries, Food).",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-add-to-cart-functionality-allowing-users-to-add-products-to-their-shopping-cart-each-product-should-have-an-add-to-cart-button-that-increments-the-quantity-if-the-item-is-already-in-the-cart",
+      "title": "Implement add to cart functionality allowing users to add products to their shopping cart. Each product should have an 'Add to Cart' button that increments the quantity if the item is already in the cart.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-cart-page-displaying-all-items-added-to-the-cart-with-their-quantities-individual-prices-and-a-total-amount-calculation-users-should-be-able-to-adjust-quantities-or-remove-items-from-the-cart",
+      "title": "Create a cart page displaying all items added to the cart with their quantities, individual prices, and a total amount calculation. Users should be able to adjust quantities or remove items from the cart.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-checkout-page-with-two-payment-options-cash-on-delivery-and-upi-offline-payment-for-upi-display-a-qr-code-that-users-can-scan-to-make-payment-manually-outside-the-app-include-an-order-confirmation-screen-after-checkout",
+      "title": "Create a checkout page with two payment options: Cash on Delivery and UPI (offline payment). For UPI, display a QR code that users can scan to make payment manually outside the app. Include an order confirmation screen after checkout.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-an-admin-panel-that-allows-adding-new-products-with-name-price-category-and-image-and-editing-existing-products-access-to-the-admin-panel-should-be-restricted-to-specific-authorized-users",
+      "title": "Create an admin panel that allows adding new products (with name, price, category, and image) and editing existing products. Access to the admin panel should be restricted to specific authorized users.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-clean-modern-design-throughout-the-entire-application-using-a-white-background-with-green-buttons-ensure-consistent-styling-across-all-pages-with-a-simple-and-intuitive-user-interface",
+      "title": "Apply a clean, modern design throughout the entire application using a white background with green buttons. Ensure consistent styling across all pages with a simple and intuitive user interface.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Home page with product categories (Vegetables, Dairy, Groceries, Food)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Product listing page with images and prices",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Add to cart functionality",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Cart page with total amount calculation",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Checkout page with Cash on Delivery and UPI offline payment (QR code)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Admin panel for adding and editing products with restricted access",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "HD Providers",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

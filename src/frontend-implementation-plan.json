@@ -1,0 +1,243 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "HD Providers Grocery and Food Delivery App - Frontend Implementation",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Create home page with four clickable product categories",
+      "acceptanceCriteria": [
+        "Home page displays exactly four categories: Vegetables, Dairy, Groceries, Food",
+        "Each category is clickable and navigates to the corresponding product listing page",
+        "Categories are visually distinct and easy to identify"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "create",
+          "description": "Create home page component displaying four product categories (Vegetables, Dairy, Groceries, Food) as clickable cards. Each card navigates to the product listing page with the respective category filter. Use grid layout for visual distinction and apply white background with green styling per REQ-7."
+        },
+        {
+          "path": "frontend/src/components/CategoryCard.tsx",
+          "operation": "create",
+          "description": "Create reusable category card component that displays category name and icon/image. Component should be clickable and accept onClick handler for navigation. Style with white background and green accents."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for HomePage at root path '/' and wire it into the router. Ensure HomePage is accessible as the main entry point of the application."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Create product listing page with filtering by category",
+      "acceptanceCriteria": [
+        "Product listing page shows product image, name, and price for each item",
+        "Products can be filtered by category (Vegetables, Dairy, Groceries, Food)",
+        "Product data is stored in the backend and retrieved dynamically"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/ProductsPage.tsx",
+          "operation": "create",
+          "description": "Create product listing page that fetches products from backend using getAllProducts() or getProductsByCategory(). Display products in a grid with image (using ExternalBlob.getDirectURL()), name, and price. Include category filter UI (tabs or dropdown) to switch between Vegetables, Dairy, Groceries, Food, and All. Wire generated product images from frontend/public/assets/generated/ for initial display. Verify the blob-storage component's usage instructions before implementing image handling."
+        },
+        {
+          "path": "frontend/src/components/ProductCard.tsx",
+          "operation": "create",
+          "description": "Create reusable product card component that displays product image (using ExternalBlob.getDirectURL()), name, and price. Include 'Add to Cart' button styled in green per REQ-7. Component accepts product data and onAddToCart callback."
+        },
+        {
+          "path": "frontend/src/hooks/useProducts.ts",
+          "operation": "create",
+          "description": "Create React Query hook to fetch products from backend. Implement useGetAllProducts() and useGetProductsByCategory(category) hooks that call the corresponding backend methods. Handle loading and error states."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for ProductsPage at '/products' with optional category query parameter. Wire the route into the router to make it accessible from navigation."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Implement add to cart functionality with quantity management",
+      "acceptanceCriteria": [
+        "Each product has an 'Add to Cart' button",
+        "Clicking the button adds the product to the cart or increments quantity if already present",
+        "Cart state persists across page navigation",
+        "Visual feedback confirms item was added to cart"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useCart.ts",
+          "operation": "create",
+          "description": "Create React Query hooks for cart operations: useAddToCart() mutation that calls backend addToCart(productId, quantity), useGetCartSummary() query that fetches cart state from backend, and useUpdateCartQuantity() mutation. Implement optimistic updates and cache invalidation to ensure cart state persists across navigation."
+        },
+        {
+          "path": "frontend/src/components/ProductCard.tsx",
+          "operation": "modify",
+          "description": "Wire the useAddToCart hook into the 'Add to Cart' button. Display toast notification or visual feedback when item is successfully added. Handle loading state during the add operation."
+        },
+        {
+          "path": "frontend/src/components/CartIcon.tsx",
+          "operation": "create",
+          "description": "Create cart icon component for navigation bar that displays current cart item count. Use useGetCartSummary hook to fetch and display totalItems. Make it clickable to navigate to cart page."
+        },
+        {
+          "path": "frontend/src/components/Navigation.tsx",
+          "operation": "create",
+          "description": "Create navigation component with links to Home, Products, and Cart. Include CartIcon component to show cart status. Style with white background and green active link indicators per REQ-7."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Include Navigation component in the app layout so it appears on all pages for consistent navigation access."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Create cart page with quantity adjustment and total calculation",
+      "acceptanceCriteria": [
+        "Cart page lists all items with product name, quantity, and individual price",
+        "Users can increase or decrease item quantities",
+        "Users can remove items from the cart",
+        "Total amount updates dynamically based on cart contents",
+        "Empty cart displays appropriate message"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/CartPage.tsx",
+          "operation": "create",
+          "description": "Create cart page that displays all cart items using useGetCartSummary hook. Show product name, image (using ExternalBlob.getDirectURL()), quantity controls (increment/decrement buttons), individual price, and remove button for each item. Display total amount at bottom. Show 'Your cart is empty' message when cart has no items. Include 'Proceed to Checkout' button styled in green per REQ-7."
+        },
+        {
+          "path": "frontend/src/components/CartItem.tsx",
+          "operation": "create",
+          "description": "Create reusable cart item component that displays product details with quantity adjustment controls (+ and - buttons). Wire useUpdateCartQuantity mutation for quantity changes and useRemoveFromCart for item removal. Show individual item subtotal."
+        },
+        {
+          "path": "frontend/src/hooks/useCart.ts",
+          "operation": "modify",
+          "description": "Add useRemoveFromCart() mutation that calls backend removeItemFromCart(productId) and useClearCart() mutation. Ensure cart queries are invalidated after mutations to reflect updated state."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for CartPage at '/cart' and wire it into the router."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Create checkout page with Cash on Delivery and offline UPI payment options",
+      "acceptanceCriteria": [
+        "Checkout page displays two payment options: Cash on Delivery and UPI",
+        "Selecting UPI displays a QR code for manual payment",
+        "Order can be placed with either payment method selected",
+        "Order confirmation screen displays after successful checkout with order details",
+        "Order data is stored in the backend"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/CheckoutPage.tsx",
+          "operation": "create",
+          "description": "Create checkout page displaying cart summary and two payment method options: 'Cash on Delivery' and 'UPI'. When UPI is selected, display the QR code image from frontend/public/assets/generated/upi-qr-placeholder.dim_200x200.png. Include 'Place Order' button styled in green per REQ-7. Use useCheckout hook to submit order with selected payment method. Navigate to order confirmation page on success."
+        },
+        {
+          "path": "frontend/src/pages/OrderConfirmationPage.tsx",
+          "operation": "create",
+          "description": "Create order confirmation page that displays order details including order ID, items ordered, total amount, and payment method. Fetch order details using useGetOrder hook with order ID from URL params or navigation state. Show success message and link to return to home page."
+        },
+        {
+          "path": "frontend/src/hooks/useCheckout.ts",
+          "operation": "create",
+          "description": "Create React Query mutation hook useCheckout() that calls backend checkout(paymentMethod) method. Returns the created order ID. Handle success and error states. Invalidate cart queries on successful checkout to clear the cart state."
+        },
+        {
+          "path": "frontend/src/hooks/useOrders.ts",
+          "operation": "create",
+          "description": "Create React Query hooks for order operations: useGetOrder(orderId) that fetches single order details from backend, and useGetMyOrders() that fetches all orders for the current user. Handle loading and error states."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add routes for CheckoutPage at '/checkout' and OrderConfirmationPage at '/order-confirmation/:orderId'. Wire both routes into the router."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Create admin panel for product management with access restriction",
+      "acceptanceCriteria": [
+        "Admin panel has forms to add new products with fields for name, price, category, and image",
+        "Admin panel displays list of existing products with edit functionality",
+        "Products can be edited to update name, price, category, or image",
+        "Admin panel access is restricted and not publicly accessible",
+        "Changes to products are immediately reflected in the product listing page"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/AdminPage.tsx",
+          "operation": "create",
+          "description": "Create admin panel page with access control using authorization component. Check user role with useIsCallerAdmin hook and display AccessDeniedScreen if not admin. Show product management interface with: (1) Add Product form with fields for name, price (number input), category (dropdown: Vegetables, Dairy, Groceries, Food), and image upload (file input), (2) Product list table showing all products with Edit buttons. Use the authorization component to restrict access as required. Verify the component's usage instructions before implementing authentication checks."
+        },
+        {
+          "path": "frontend/src/components/AccessDeniedScreen.tsx",
+          "operation": "create",
+          "description": "Create access denied component that displays when unauthorized users attempt to access admin panel. Show message indicating restricted access and link back to home page. Style consistently with white background per REQ-7."
+        },
+        {
+          "path": "frontend/src/components/ProductForm.tsx",
+          "operation": "create",
+          "description": "Create reusable product form component for adding/editing products. Include controlled inputs for name, price, category (dropdown), and image upload. Support both create and edit modes. Wire useAddProduct and useUpdateProduct mutations. Handle image upload using ExternalBlob.fromBytes() with progress tracking. Verify the blob-storage component's usage instructions before implementing image handling. Style form inputs with green submit button per REQ-7."
+        },
+        {
+          "path": "frontend/src/hooks/useProducts.ts",
+          "operation": "modify",
+          "description": "Add useAddProduct() mutation that calls backend addProduct(name, price, category, image) and useUpdateProduct() mutation that calls updateProduct(productId, name, price, category, image). Invalidate product queries after mutations to refresh product list."
+        },
+        {
+          "path": "frontend/src/hooks/useAuth.ts",
+          "operation": "create",
+          "description": "Create React Query hook useIsCallerAdmin() that calls backend isCallerAdmin() method to check if current user has admin role. Use this hook in AdminPage for access control. Use the authorization component as specified in its usage instructions. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for AdminPage at '/admin'. Wire the route into the router. Access control is handled within AdminPage component itself."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Apply clean modern design with white background and green buttons",
+      "acceptanceCriteria": [
+        "All pages use white background as the primary background color",
+        "All primary action buttons (Add to Cart, Checkout, Submit, etc.) are styled in green",
+        "Typography and spacing create a clean, modern aesthetic",
+        "Design is consistent across home, product listing, cart, checkout, and admin pages",
+        "UI is intuitive and easy to navigate"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Update global styles to set body background to white (#ffffff). Define CSS custom properties for the green theme color (--primary-green: #10b981 or similar green). Ensure typography uses clean, modern fonts with appropriate line-height and spacing. Set consistent padding and margins for clean layout."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend Tailwind configuration to add custom green color as primary theme color. Configure it to be used in bg-primary, text-primary, border-primary classes. Ensure white background is default. Add spacing and typography configurations for clean, modern aesthetic."
+        },
+        {
+          "path": "frontend/src/components/Button.tsx",
+          "operation": "create",
+          "description": "Create reusable Button component with default green styling for primary actions. Support variants (primary green, secondary white/gray) and sizes. Apply hover and active states. Use this component consistently across all pages for action buttons."
+        }
+      ]
+    }
+  ]
+}

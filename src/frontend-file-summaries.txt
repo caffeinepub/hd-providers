@@ -1,0 +1,21 @@
+{
+  "frontend/src/App.tsx": "Main application component with TanStack Router setup, defining all routes (home, products, cart, checkout, order confirmation, admin) with a shared layout including navigation and footer.",
+  "frontend/src/pages/HomePage.tsx": "Home page displaying four product categories (Vegetables, Dairy, Groceries, Food) as clickable cards that navigate to filtered product listings.",
+  "frontend/src/pages/ProductsPage.tsx": "Product listing page with category filtering, displaying products in a grid with add-to-cart functionality and loading states.",
+  "frontend/src/pages/CartPage.tsx": "Shopping cart page showing cart items with quantity controls, remove functionality, order summary, and checkout button.",
+  "frontend/src/pages/CheckoutPage.tsx": "Checkout page with payment method selection (Cash on Delivery and UPI with QR code), order summary, and place order functionality.",
+  "frontend/src/pages/OrderConfirmationPage.tsx": "Order confirmation page displaying order details, items, payment method, and navigation options after successful checkout.",
+  "frontend/src/pages/AdminPage.tsx": "Admin panel with access control for adding/editing products, displaying product list in a table with edit functionality.",
+  "frontend/src/components/Navigation.tsx": "Navigation bar with links to home, products, cart (with item count badge), and admin panel (for authorized users).",
+  "frontend/src/components/CategoryCard.tsx": "Reusable category card component displaying category name, icon, and image with hover effects.",
+  "frontend/src/components/ProductCard.tsx": "Product card component showing product image, name, category, price, and add-to-cart button.",
+  "frontend/src/components/CartItem.tsx": "Cart item component with product details, quantity adjustment controls, remove button, and subtotal calculation.",
+  "frontend/src/components/ProductForm.tsx": "Form component for adding and editing products with fields for name, price, category, and image upload with progress tracking.",
+  "frontend/src/components/AccessDeniedScreen.tsx": "Access denied screen displayed when unauthorized users attempt to access restricted areas like the admin panel.",
+  "frontend/src/hooks/useProducts.ts": "React Query hooks for product operations including fetching all products, filtering by category, adding, and updating products.",
+  "frontend/src/hooks/useCart.ts": "React Query hooks for cart operations including fetching cart summary, adding items, updating quantities, removing items, and checkout.",
+  "frontend/src/hooks/useOrders.ts": "React Query hooks for order operations including fetching single order details and user's order history.",
+  "frontend/src/hooks/useAuth.ts": "React Query hook for checking if the current user has admin privileges.",
+  "frontend/src/index.css": "Global styles with OKLCH color system customized for HD Providers with green primary color theme and white background.",
+  "frontend/tailwind.config.js": "Tailwind configuration with custom green color scheme, typography, and design tokens for the HD Providers brand."
+}
